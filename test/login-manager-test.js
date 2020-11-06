@@ -1,56 +1,45 @@
+import { itParam } from "mocha-param";
 import { expect } from "chai";
 import  login  from "../src/scripts.js";
 
-describe("manager login", function () {
-  beforeEach(() => {});
+describe("Manager login validation", function () {
+  itParam(
+    "this username: ${value.username} should fail to login",
+    [
+      { username: "77", password: "overlook2020" },
+      { username: "", password: "overlook2020" },
+      { username: "username", password: "overlook2020" },
+      { username: "manager ", password: "overlook2020" },
+      { username: "13p9sdvnlni", password: "overlook2020" },
+      { username: null, password: "overlook2020" },
+    ],
+    function (credentials) {
+      let didLogInSucceed = login(credentials);
+      expect(didLogInSucceed).to.be.false;
+    }
+  );
 
-  it("succeeds with correct credentials", function () {
-    let credentials = {username: "manager", password: "overlook2020"};
-    let didLogInSucceed = login(credentials);
-    expect(didLogInSucceed).to.be.true;
-  });
+  itParam(
+    "this password: ${value.password} should fail to login",
+    [
+      { username: "manager", password: "overlook  2020" },
+      { username: "manager", password: "BANANA" },
+      { username: "manager", password: "" },
+      { username: "manager", password: "7@#SFGDBNHSCDSVascs" },
+      { username: "manager", password: null },
+    ],
+    function (credentials) {
+      let didLogInSucceed = login(credentials);
+      expect(didLogInSucceed).to.be.false;
+    }
+  );
 
-  it("fails with incorrect password", function () {
-    let credentials = { username: "manager", password: "banana" };
-    let didLogInSucceed = login(credentials);
-    expect(didLogInSucceed).to.be.false;
-  });
-
-  it("fails with blank password", function () {
-    let credentials = { username: "manager", password: "" };
-    let didLogInSucceed = login(credentials);
-    expect(didLogInSucceed).to.be.false;
-  });
-
-  it("fails with incorrectly formatted password", function () {
-    let credentials = { username: "manager", password: "@thisIsTED" };
-    let didLogInSucceed = login(credentials);
-    expect(didLogInSucceed).to.be.false;
-  });
-
-  it("fails with incorrect username", function () {
-    let credentials = { username: "Liv Tyler", password: "overlook2020" };
-    let didLogInSucceed = login(credentials);
-    expect(didLogInSucceed).to.be.false;
-  });
-
-  it("fails with blank usename", function () {
-    let credentials = { username: "", password: "overlook2020" };
-    let didLogInSucceed = login(credentials);
-    expect(didLogInSucceed).to.be.false;
-  });
-
-  it("fails with incorrectly formatted usename", function () {
-    let credentials = { username: "77Annie", password: "overlook2020" };
-    let didLogInSucceed = login(credentials);
-    expect(didLogInSucceed).to.be.false;
-  });
-
-  it("fails with incorrectly formatted usename", function () {
-    let didLogInSucceed = login(null);
-    expect(didLogInSucceed).to.be.false;
-  });
-
+  itParam(
+    "These credentials ${value.username}, ${value.password} succeed to login",
+    [{ username: "manager", password: "overlook2020" }],
+    function (credentials) {
+      let didLogInSucceed = login(credentials);
+      expect(didLogInSucceed).to.be.true;
+    }
+  );
 });
-
-
