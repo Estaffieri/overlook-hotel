@@ -1,6 +1,6 @@
 import { itParam } from "mocha-param";
 import { expect } from "chai";
-import  login  from "../src/scripts.js";
+import LoginService from "../src/classes/LoginService.js";
 
 describe("Manager login validation", function () {
   itParam(
@@ -14,7 +14,9 @@ describe("Manager login validation", function () {
       { username: null, password: "overlook2020" },
     ],
     function (credentials) {
-      let didLogInSucceed = login(credentials);
+      let loginService = new LoginService();
+
+      let didLogInSucceed = loginService.login(credentials);
       expect(didLogInSucceed).to.be.false;
     }
   );
@@ -29,7 +31,9 @@ describe("Manager login validation", function () {
       { username: "manager", password: null },
     ],
     function (credentials) {
-      let didLogInSucceed = login(credentials);
+      let loginService = new LoginService();
+
+      let didLogInSucceed = loginService.login(credentials);
       expect(didLogInSucceed).to.be.false;
     }
   );
@@ -38,7 +42,9 @@ describe("Manager login validation", function () {
     "These credentials ${value.username}, ${value.password} succeed to login",
     [{ username: "manager", password: "overlook2020" }],
     function (credentials) {
-      let didLogInSucceed = login(credentials);
+      let loginService = new LoginService();
+
+      let didLogInSucceed = loginService.login(credentials);
       expect(didLogInSucceed).to.be.true;
     }
   );
