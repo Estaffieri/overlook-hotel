@@ -1,13 +1,15 @@
 // color
-$soft-black: hsla(0, 0%, 12%);
-$white: hsla(00, 0%, 100%);
-$light-beige: hsla(47, 25%, 89%);
-$cappucino: hsla(35, 40%, 75%);
-$wood-ash: hsla(45, 2%, 55%);
-$soft-coral:hsla(6, 73%, 68%);
-$fireweed: hsla(4, 77%, 61%);
+$soft-black: hsl(0, 0%, 12%);
+$white: hsl(00, 0%, 100%);
+$light-beige: hsl(47, 25%, 89%);
+$cappucino: hsl(35, 40%, 75%);
+$wood-ash: hsl(45, 2%, 55%);
+$soft-coral:hsl(6, 73%, 68%);
+$fireweed: hsl(4, 77%, 61%);
 
 //font
 $main-font-family: 'Open Sans', sans-serif;
 $design-font-family: 'Playfair Display', serif;
 
+//icon images
+$hotel-icon: url(../images/hotel.svg);

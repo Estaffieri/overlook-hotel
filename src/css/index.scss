@@ -9,12 +9,40 @@ margin: 0;
 padding: 0;
 }
 
+header {
+    background-color:$light-beige;
+    font-family: $design-font-family;
+}
+
 body {
     background-color:$light-beige;
     font-family: $main-font-family;
 }
 
-button:active {
-    border: none;
-    outline: none;
+//============ Login Page ============>
+
+header.login-header {
+  >img#icon {
+      background-image: $hotel-icon;
+      width: 1vw;
+  }
+  >h1 {
+      font-size: 1em;
+  }
 }
+
+//============ Media Queries ============>
+    .main {
+        background: red;
+      // normal styling code here
+
+      @include respond(tablet) {
+            background-color: green;
+            // responsive code for tablet viewport i.e. 600px
+        }
+
+      @include respond(mobile) {
+            background-color: blue;
+            // responsive code for mobile viewport i.e. 480px   
+        }
+    }

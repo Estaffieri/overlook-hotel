@@ -9,13 +9,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <header tabindex="0">
-      <img
-      <h1 tabindex ="0">Overlook Hotel</h1>
+    <header tabindex="0" class="login-header">
+      <img class="hotel-icon" id="icon" src="./images/hotel.svg"
+        alt="hotel-icon-for-login-page">
+      <h1 tabindex="0">Overlook Hotel</h1>
     </header>
-    <h1>Webpack Starter Kit</h1>
-
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+    <main>
+      <div class="login-form-container">
+        <section class="login-error-message hide"></section>
+        <form tabindex="0" class="Login-form" aria-tag="Customer or Manager login">
+          <label for="username-input">Username:</label>
+          <input id="username-input" type="text" required aria-required="true" aria-label="username-input"></input>
+          <label for="password-input">Password:</label>
+          <input id="password-input" type="text" required aria-required="true" aria-label="password-input"></input>
+          <button type="submit" name="login-button" class="login-button" aria-label="login as a customer or manager">LOGIN</button>
+        </form>
+      </div>
+    </main>
+    
 
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
