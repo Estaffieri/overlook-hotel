@@ -1,3 +1,4 @@
+ //display
  @mixin respond ($breakpoint) {
 
         @if $breakpoint==tablet {
@@ -14,3 +15,9 @@
       }
     }
 
+
+@mixin display($justify) {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: $justify;
+}
