@@ -10,6 +10,11 @@ padding: 0;
 }
 
 body {
-    background-color:;
-    
+    background-color:$light-beige;
+    font-family: $main-font-family;
+}
+
+button:active {
+    border: none;
+    outline: none;
 }
