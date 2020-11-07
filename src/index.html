@@ -18,12 +18,15 @@
     </header>
     <main>
       <div class="login-form-container">
-        <section class="login-error-message hide"></section>
+        <section class="login-error-message hide">
+          <img class="warning-icon" id="icon" src="./images/warning.svg" alt="warning-icon-for-login-page">
+          <p class="error-message">Oops! Invalid login!</p>
+        </section>
         <form tabindex="0" class="Login-form" aria-tag="Customer or Manager login">
-          <label for="username-input">Username:</label>
-          <input id="username-input" type="text" required aria-required="true" aria-label="username-input"></input>
-          <label for="password-input">Password:</label>
-          <input id="password-input" type="text" required aria-required="true" aria-label="password-input"></input>
+          <label tabindex ="0" for="username-input">Username:</label>
+          <input id="username-input" type="text" required aria-required="true" aria-label="username-input" placeholder="Customer or Manager username"></input>
+          <label tabindex="0" for="password-input">Password:</label>
+          <input id="password-input" type="text" required aria-required="true" aria-label="password-input" placeholder="Password"></input>
           <button type="submit" name="login-button" class="login-button" aria-label="login as a customer or manager">LOGIN</button>
         </form>
       </div>
