@@ -10,9 +10,9 @@ describe("User Repository", function () {
     expect(user.id).to.be.equal(2);
   });
 
-it("findByUsername should return the correct user information", function () {
-    let userRepository = new UserRepository([{id:3 , name: "Estelle Staffieri"}]);
+  it("findByUsername should return the correct user information", function () {
+    let userRepository = new UserRepository([{ id: 3, name: "Estelle Staffieri"}]);
     let user = userRepository.findByUsername("customer3");
     expect(user.id).to.be.equal(3);
-});
+  });
 });
