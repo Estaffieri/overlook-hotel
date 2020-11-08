@@ -1,7 +1,9 @@
 import { itParam } from "mocha-param";
 import { expect } from "chai";
 import LoginService from "../src/classes/LoginService.js";
-const userRepository = { findByUsername: function (username) {} };
+const userRepository = { findByUsername: function (username) {
+  return null;
+} };
 
 describe("Manager login validation", function () {
   itParam(

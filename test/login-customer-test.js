@@ -21,8 +21,8 @@ describe("Customer login validation", function () {
   it("if customer doesn't exist they should fail to login", function () {
     let userRepository = {
       findByUsername (username) {
-        return null
-      },
+        return null;
+      }
     };
     let credentials = { username: "customer1", password: "overlook2020" };
     let loginService = new LoginService(userRepository);
