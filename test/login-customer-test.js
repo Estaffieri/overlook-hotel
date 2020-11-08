@@ -9,8 +9,8 @@ describe("Customer login validation", function () {
     let userRepository = {};
     let credentials = {username: "customer1", password: "overlook2020"};
     let loginService = new LoginService(userRepository);
-    return loginService.login(credentials).then(didLogInSucceed => 
-      expect(didLogInSucceed).to.be.equal(true))
+    let didLogInSucceed = loginService.login(credentials);
+    expect(didLogInSucceed).to.be.equal(true);
   }
   );
 });

@@ -6,9 +6,9 @@ export default class LoginService {
   login(credentials) {
     if (credentials && credentials.username === "manager"
      && credentials.password === "overlook2020") {
-      return Promise.resolve(true);
+      return true;
     } else {
-      return Promise.resolve(false);
+      return false;
     }
 
     //     this.userRepository.findByUsername(credentials.username)
