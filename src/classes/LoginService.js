@@ -1,14 +1,29 @@
 export default class LoginService {
-  constructor() {
+  constructor(userRepository) {
+    this.userRepository = userRepository;
 
   }
   login(credentials) {
     if (credentials && credentials.username === "manager"
      && credentials.password === "overlook2020") {
-      return true;
+      return Promise.resolve(true);
     } else {
-      return false;
+      return Promise.resolve(false);
     }
+
+    //     this.userRepository.findByUsername(credentials.username)
+    //   .then(user => {
+    //     if (credentials && credentials.username === "manager"
+    //  && credentials.password === "overlook2020") {
+    //       return true;
+    //     } else {
+    //       return false;
+    //     }
+    //   })
+    
+    //   .catch()
+    // return Promise.reject("This is very weird")
+    
   }
 
 }

@@ -16,8 +16,9 @@ describe("Manager login validation", function () {
     function (credentials) {
       let loginService = new LoginService();
 
-      let didLogInSucceed = loginService.login(credentials);
-      expect(didLogInSucceed).to.be.false;
+      return loginService
+        .login(credentials)
+        .then(didLogInSucceed => expect(didLogInSucceed).to.be.equal(false));
     }
   );
 
@@ -33,8 +34,10 @@ describe("Manager login validation", function () {
     function (credentials) {
       let loginService = new LoginService();
 
-      let didLogInSucceed = loginService.login(credentials);
-      expect(didLogInSucceed).to.be.false;
+      return loginService
+        .login(credentials)
+        .then((didLogInSucceed) => expect(didLogInSucceed).to.be.equal(false));
+
     }
   );
 
@@ -44,8 +47,10 @@ describe("Manager login validation", function () {
     function (credentials) {
       let loginService = new LoginService();
 
-      let didLogInSucceed = loginService.login(credentials);
-      expect(didLogInSucceed).to.be.true;
+      return loginService
+        .login(credentials)
+        .then((didLogInSucceed) => expect(didLogInSucceed).to.be.equal(true));
+
     }
   );
 });
