@@ -15,4 +15,5 @@ describe("User Repository", function () {
     let user = userRepository.findByUsername("customer3");
     expect(user.id).to.be.equal(3);
   });
+
 });

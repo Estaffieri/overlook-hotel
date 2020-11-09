@@ -3,8 +3,8 @@ import User from "./User.js";
 
 export default class UserRepository {
   constructor(userArray) {
-    this.users = userArray.map(userJson => {
-      return new User(userJson.id, userJson.name)
+    this.users = userArray.map(user => {
+      return new User(user.id, user.name)
     })
 
   }
