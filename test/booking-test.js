@@ -1,9 +1,10 @@
-import {expect} from 'chai';
+import { expect } from "chai";
 import {
   sampleUserData,
   sampleRoomData,
   sampleBookingData,
 } from "../src/data/test-sample-data";
+import Booking from "../src/classes/Booking";
 import User from "../src/classes/User";
 
 describe("User", function () {
