@@ -1,2 +1,113 @@
 @import 'variables';
 @import 'mixins';
+
+*,
+*:after,
+*:before {
+box-sizing: border-box;
+border: 1px solid black;
+margin: 0;
+padding: 0;
+}
+
+header {
+    background-color:$light-beige;
+    font-family: $design-font-family;
+}
+
+body {
+    background-color:$light-beige;
+    font-family: $main-font-family;
+}
+
+//============ Login Page ============>
+
+div.login-header-container {
+    @include display(center);
+        margin-top: 20%;
+        align-items: center;
+  >img#icon {
+      background-image: $hotel-icon;
+      width: 15%;
+  }
+  >h1 {
+      font-family:$design-font-family;
+  }
+}
+
+div.login-form-container {
+    @include display(center);
+    margin-top: 25%;
+    align-items: center;
+    width: 100%;
+  >section.login-error-message {
+    display:flex;
+    justify-content: center;
+    margin-bottom: 2%;
+    width: 73%;
+
+    >img#icon {
+     background-image: $warning-icon;
+     margin-right: 1vw;
+     width: 6%;
+    }
+
+    >p.error-message {
+    font-size: 2vh;
+}
+  }
+  >form.Login-form {
+    @include display(center);
+    font-family: $main-font-family;
+    width: 73%;
+    >label:nth-of-type(1) {
+        font-size: 4vw;
+    }
+    >input#username-input {
+        width:100%;
+        height: 5vh;
+    }
+    >label:nth-of-type(2) {
+        font-size: 4vw;
+    }
+    >input#password-input {
+        width: 100%;
+        height: 5vh;
+    }
+
+    >button.login-button {
+        align-self: center;
+        border: transparent;
+        margin-top: 10%;
+        padding: 5%;
+        width: 65%;
+        color: $white;
+        background-color: $fireweed;
+    }
+  }
+}
+:placeholder-shown {
+    font-size: 3vw;
+    opacity: 75%;
+    padding-left: 1vw;
+}
+
+//============ Media Queries ============>
+    .main {
+        background: red;
+      // normal styling code here
+
+      @include respond(tablet) {
+            background-color: green;
+            // responsive code for tablet viewport i.e. 600px
+        }
+
+      @include respond(mobile) {
+            background-color: blue;
+            // responsive code for mobile viewport i.e. 480px   
+        }
+    }
+
+    .hide {
+  display: none;
+}

@@ -1,0 +1,23 @@
+ //display
+ @mixin respond ($breakpoint) {
+
+        @if $breakpoint==tablet {
+
+        @media only screen and (max-width: 600px) {
+          @content;
+        }
+      }
+
+      @if $breakpoint==mobile {
+        @media only screen and (max-width: 480px) {
+          @content;
+        }
+      }
+    }
+
+
+@mixin display($justify) {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: $justify;
+}
