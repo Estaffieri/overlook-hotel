@@ -1,6 +1,14 @@
+import Room from "./Room";
+
+
 export default class User {
-  constructor(id, name) {
-    this.id = id;
-    this.name = name;
+  constructor(users) {
+    this.id = users.id;
+    this.name = users.name;
+
   }
+  getFirstName() {
+    return this.name.split(" ")[0]
+  }
+  
 }
