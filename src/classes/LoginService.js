@@ -23,5 +23,4 @@ export default class LoginService {
   isPasswordValid(password) {
     return password === "overlook2020";
   }
-
 }

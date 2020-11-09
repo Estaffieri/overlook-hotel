@@ -4,29 +4,31 @@
 // An example of how you tell webpack to use a CSS (SCSS) file
 import "./css/base.scss";
 import "./css/index.scss";
-import "./domLoader.js"
+import LoginService from "./classes/LoginService";
+import  formLoginButton  from "./domLoader.js";
+
 import UserRepository from "../src/classes/UserRepository.js";
 let userData;
 let userRepository;
+let login
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+import './images/turing-logo.png';
 
 
+// const userPromise = fetch(
+//   "https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users"
+// ).then((resp) => resp.json());
 
-const userPromise = fetch(
-  "https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users"
-).then((resp) => resp.json());
+// Promise.all([userPromise])
+//   .then((data) => {
+//     userData = data[0].users;
+//     userRepository = new UserRepository(userData);
+//   })
+//   .then(() => {
+//     loadApp();
+//   });
 
-Promise.all([userPromise])
-  .then((data) => {
-    userData = data[0].users;
-    userRepository = new UserRepository(userData);
-  })
-  .then(() => {
-    loadApp();
-  });
+// function loadApp() {
 
-function loadApp() {
-
-}
+// }
