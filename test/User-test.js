@@ -1,25 +1,34 @@
-// import {expect} from 'chai';
-// import User from "../src/classes/User";
-// import {sampleUserData, sampleRoomData, sampleBookingData} from "../src/data/test-sample-data";
+import {expect} from 'chai';
+import {
+  sampleUserData,
+  sampleRoomData,
+  sampleBookingData,
+} from "../src/data/test-sample-data";
+import User from "../src/classes/User";
 
-// describe('User', function() {
-//   let user;
-
-//   beforeEach(() => {
-   
-
-//     user = new User(sampleUserData[0], sampleRoomData, sampleBookingData)
-//   })
-  
-//   it("should be a function", function() {
-//     expect(User).to.be.a("function");
-//   });
-
-//   it("should be an instance of User", function() {
-//     expect(user).to.be.an.instanceof(User);
-//   })
-  
-//   it("should be able to get a user id", function() {
-//     expect(user.getUserId(user.id)).to.equal(1);
-//   }
-// });
+describe("User", function () {
+  let user1;
+  let user2;
+  beforeEach(() => {
+    user1 = new User(sampleUserData.users[0]);
+    user2 = new User(sampleUserData.users[1]);
+  });
+  it("should be a function", function () {
+    expect(User).to.be.a("function");
+  });
+  it("should be an instance of User", function () {
+    expect(user1).to.be.an.instanceof(User);
+  });
+  it("should have an id", function () {
+    expect(user1.id).to.equal(1);
+  });
+  it("should have a name", function () {
+    expect(user1.name).to.equal("Leatha Ullrich");
+  });
+  it("should be able to return a user's total bookings", function () {
+    expect(user2.totalBookings).to.deep.equal([]);
+  });
+  it("should be able to return just a user's first name", function () {
+    expect(user1.getFirstName()).to.equal("Leatha");
+  });
+});
