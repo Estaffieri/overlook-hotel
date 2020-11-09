@@ -4,8 +4,8 @@
 // An example of how you tell webpack to use a CSS (SCSS) file
 import "./css/base.scss";
 import "./css/index.scss";
-import "../dom-updates/All-Dom-Loader"
-import UserRepository from "./src/classes/UserRepository.js";
+import "./domLoader.js"
+import UserRepository from "../src/classes/UserRepository.js";
 let userData;
 let userRepository;
 
