@@ -175,4 +175,16 @@ describe("Customer", function () {
       },
     ]);
   });
+  it("should be return a message to the user if no rooms of that type where found for this date", function () {
+    expect(
+      customer2.filterByRoomType(
+        "basement",
+        sampleBookingData,
+        sampleRoomData,
+        "2021/01/27"
+      )
+    ).to.equal(
+      "Oops! Looks like we don't have any rooms of that type. Please try again."
+    );
+  });
 });

@@ -1,6 +1,5 @@
 import { apiCalls } from "../apiCalls";
 import User from "./User";
-import Booking from "./Booking";
 
 export default class Customer extends User {
   constructor(userData) {
@@ -45,9 +44,14 @@ export default class Customer extends User {
   }
   filterByRoomType(searchedRoomType, bookingData, roomData, date) {
     let availableRooms = this.findVacencies(bookingData, roomData, date)
-    return availableRooms.filter(room => {
+    let filteredRooms = availableRooms.filter(room => {
       return room.roomType === searchedRoomType
     })
+    if (filteredRooms.length) {
+      return filteredRooms
+    } else {
+      return "Oops! Looks like we don't have any rooms of that type. Please try again."
+    }
   }
   //   }
   //   filterByBedSize() {
