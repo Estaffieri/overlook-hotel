@@ -1,8 +1,6 @@
 import { expect } from "chai";
 import {
   sampleUserData,
-  sampleRoomData,
-  sampleBookingData,
 } from "../src/data/test-sample-data";
 import User from "../src/classes/User";
 
