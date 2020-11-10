@@ -117,6 +117,7 @@ describe.only("Room", function () {
       sampleBookingData,
       currentDate
     );
+    console.log(currentOccupancyPercent)
     expect(currentOccupancyPercent).to.equal(32)
   })
 });

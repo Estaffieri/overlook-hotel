@@ -20,8 +20,9 @@ export default class Room {
     }) 
   }
   getOccupancyPercent(bookings, date) {
-    return Math.round(((this.getAvailableRooms(bookings, date).length)
-   / this.rooms.length) - 1 * -100);
+return Math.round(((this.availableRooms(bookings, date).length) / this.rooms.length) - 1) * -100)
+  
+
   }
   getRoomType(type, bookings, date) {
     return this.rooms.filter(room => {
