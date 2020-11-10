@@ -36,20 +36,22 @@ describe("Customer", function () {
       id: "5fwrgu4i7k55hl7td",
       userID: 2,
       date: "2020/01/27",
-      roomNumber: 20,
+      roomNumber: 1,
       roomServiceCharges: [],
     },
     {
       id: "5fwrgu4i7k56hl7td",
       userID: 2,
       date: "2020/01/27",
-      roomNumber: 21,
+      roomNumber: 2,
       roomServiceCharges: [],
     }
     ]);
   });
   it("should be able to return a customer's total bill", function () {
-    expect(customer2.viewTotalBill(sampleBookingData, sampleRoomData)).to.equal(927.08);
+    expect(customer2.viewTotalBill(sampleBookingData, sampleRoomData)).to.equal(
+      835.78
+    );
   });
   it("Should only see rooms that are available upon search", function () {
     let date = "2021/01/27";

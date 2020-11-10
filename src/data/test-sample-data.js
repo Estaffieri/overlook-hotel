@@ -215,14 +215,14 @@ export const sampleBookingData = [
     id: "5fwrgu4i7k55hl7td",
     userID: 2,
     date: "2020/01/27",
-    roomNumber: 20,
+    roomNumber: 1,
     roomServiceCharges: [],
   },
   {
     id: "5fwrgu4i7k56hl7td",
     userID: 2,
     date: "2020/01/27",
-    roomNumber: 21,
+    roomNumber: 2,
     roomServiceCharges: [],
   }
 ];
