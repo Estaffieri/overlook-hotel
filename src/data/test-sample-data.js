@@ -121,7 +121,23 @@ export const sampleRoomData = [
     "bedSize": "twin",
     "numBeds": 1,
     "costPerNight": 497.64
-  }
+  },
+  {
+    "number": 20,
+    "roomType": "suite",
+    "bidet": false,
+    "bedSize": "twin",
+    "numBeds": 1,
+    "costPerNight": 497.64
+  },
+  {
+    "number": 21,
+    "roomType": "single room",
+    "bidet": false,
+    "bedSize": "queen",
+    "numBeds": 1,
+    "costPerNight": 429.44
+  },
 ];
 
 export const sampleBookingData = [
@@ -206,7 +222,7 @@ export const sampleBookingData = [
     id: "5fwrgu4i7k56hl7td",
     userID: 2,
     date: "2020/01/27",
-    roomNumber: 20,
+    roomNumber: 21,
     roomServiceCharges: [],
   }
 ];

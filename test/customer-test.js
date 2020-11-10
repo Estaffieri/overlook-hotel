@@ -32,7 +32,7 @@ describe("Customer", function () {
     expect(customer1.greetUser()).to.equal("Welcome, Leatha!");
   });
   it("should be able to return a customer's booking history", function () {
-    expect(customer2.viewAllMyBookings(sampleBookingData)).to.equal([{
+    expect(customer2.viewAllMyBookings(sampleBookingData)).to.deep.equal([{
       id: "5fwrgu4i7k55hl7td",
       userID: 2,
       date: "2020/01/27",
@@ -48,8 +48,8 @@ describe("Customer", function () {
     }
     ]);
   });
-  it("should be able to return a customer's past bookings", function () {
-    expect(customer2.pastBookings).to.deep.equal([]);
+  it("should be able to return a customer's total bill", function () {
+    expect(customer2.viewTotalBill(sampleBookingData, sampleRoomData)).to.equal(927.08);
   });
   it("should be able to return a customer's present bookings", function () {
     expect(customer2.currentBookings).to.deep.equal([]);

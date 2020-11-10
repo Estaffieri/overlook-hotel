@@ -19,7 +19,7 @@ export default class Customer extends User {
     })
   }
   viewTotalBill(bookingData, roomData) {
-    let finalBill = this.viewTotalBill(bookingData).reduce((grandTotal, mybooking) => {
+    let finalBill = this.viewAllMyBookings(bookingData).reduce((grandTotal, myBooking) => {
       let matchingRoom = roomData.find(room => room.number === myBooking.roomNumber)
       grandTotal += matchingRoom.costPerNight
       return grandTotal;
