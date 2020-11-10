@@ -10,9 +10,9 @@ describe("User", () => {
   let user2;
 
   before(() => {
-    user = new User(sampleUserData.users[0]);
-    user1 = new User(sampleUserData.users[1]);
-    user2 = new User({id : 0, name: "Manager"});
+    user = new User(sampleUserData[0]);
+    user1 = new User(sampleUserData[1]);
+    user2 = new User({id: 0, name: "Manager"});
   });
 
   it("should be a function", () => {
@@ -32,7 +32,7 @@ describe("User", () => {
   });
 
   it("should be able to have a different id and name", () => {
-    user = new User(sampleUserData.users[0]);
+    user = new User(sampleUserData[0]);
     expect(user.id).to.equal(1);
     expect(user.name).to.equal("Leatha Ullrich");
   });

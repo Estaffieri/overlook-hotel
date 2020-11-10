@@ -13,8 +13,8 @@ describe("Customer", function () {
   let currentDate;
   beforeEach(() => {
     currentDate = "06/01/2020";
-    customer1 = new Customer(sampleUserData.users[0]);
-    customer2 = new Customer(sampleUserData.users[1]);
+    customer1 = new Customer(sampleUserData[0]);
+    customer2 = new Customer(sampleUserData[1]);
   });
   it("should be a function", function () {
     expect(Customer).to.be.a("function");
@@ -31,11 +31,22 @@ describe("Customer", function () {
   it("should be able to return a welcome message", function () {
     expect(customer1.greetUser()).to.equal("Welcome, Leatha!");
   });
-  it("should be able to return a customer's total bookings", function () {
-    expect(customer1.totalBookings).to.deep.equal([]);
-    console.log(customer1);
-    expect(customer2.totalBookings).to.deep.equal([]);
-
+  it("should be able to return a customer's booking history", function () {
+    expect(customer2.viewAllMyBookings(sampleBookingData)).to.equal([{
+      id: "5fwrgu4i7k55hl7td",
+      userID: 2,
+      date: "2020/01/27",
+      roomNumber: 20,
+      roomServiceCharges: [],
+    },
+    {
+      id: "5fwrgu4i7k56hl7td",
+      userID: 2,
+      date: "2020/01/27",
+      roomNumber: 21,
+      roomServiceCharges: [],
+    }
+    ]);
   });
   it("should be able to return a customer's past bookings", function () {
     expect(customer2.pastBookings).to.deep.equal([]);

@@ -13,8 +13,8 @@ describe("Booking", function () {
   let currentDate;
   beforeEach(() => {
     currentDate = "11/09/2020";
-    user1 = new User(sampleUserData.users[0]);
-    user2 = new User(sampleUserData.users[1]);
+    user1 = new User(sampleUserData[0]);
+    user2 = new User(sampleUserData[1]);
   });
   it("should be a function", function () {
     expect(User).to.be.a("function");
