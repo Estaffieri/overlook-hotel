@@ -1,12 +1,34 @@
-import User from "./User";
+import { apiCalls } from "../apiCalls";
+import Booking from "./Booking";
 
 export default class Customer extends User {
-  constructor(customer) {
-    super(customer)
+  constructor(userData) {
+    super(userData)
     this.currentBookings = [];
-    this.totalBookings = [];
-    this.pastBookings = [];
     this.upcomingBookings = [];
+    this.pastBookings = [];
+    this.totalSpent = [];
+  }
+  filterBookingsByDate() {
+ 
+  }
+  filterByRoomType() {
+
+  }
+  filterByBedSize() {
+
+  }
+  sortByCost() {
+
+  }
+  sortByNumberOfBeds() {
+
+  }
+  bookARoom() {
+
+  }
+  callRoomService() {
+      
   }
 }
 
