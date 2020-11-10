@@ -1,42 +1,48 @@
-import {expect} from 'chai';
-import {
-  sampleUserData,
-  sampleRoomData,
-  sampleBookingData,
-} from "../src/data/test-sample-data";
+import { expect } from "chai";
+// import {
+//   sampleUserData,
+//   sampleRoomData,
+//   sampleBookingData,
+// } from "../src/data/test-sample-data";
 import User from "../src/classes/User";
 
-describe("User", function () {
-  let user1;
-  let user2;
-  let currentDate;
-  beforeEach(() => {
-    currentDate = "11/09/2020";
-    user1 = new User(sampleUserData.users[0]);
-    user2 = new User(sampleUserData.users[1]);
+describe("User", () => {
+  let user;
+  let users;
+  before(() => {
+    users = {
+      users: [
+        { id: 1, name: "Leatha Ullrich" },
+        { id: 2, name: "Rocio Schuster" },
+        { id: 3, name: "Kelvin Schiller" },
+      ],
+    };
+    user = new User(users.users[1]);
   });
-  it("should be a function", function () {
+
+  it("should be a function", () => {
     expect(User).to.be.a("function");
   });
-  it("should be an instance of User", function () {
-    expect(user1).to.be.an.instanceof(User);
+
+  it("should instantiate a user object", () => {
+    expect(user).to.be.an.instanceOf(User);
   });
-  it("should have an id", function () {
-    expect(user1.id).to.equal(1);
+
+  it("should have an id", () => {
+    expect(user.id).to.equal(2);
   });
-  it("should have a name", function () {
-    expect(user1.name).to.equal("Leatha Ullrich");
+
+  it("should have a name", () => {
+    expect(user.name).to.equal("Rocio Schuster");
   });
-  it("should be able to return a user's total bookings", function () {
-    expect(user2.totalBookings).to.deep.equal([]);
+
+  it("should be able to have a different id and name", () => {
+    user = new User(users.users[0]);
+    expect(user.id).to.equal(1);
+    expect(user.name).to.equal("Leatha Ullrich");
   });
-  it("should be able to return a user's past bookings", function () {
-    expect(user2.pastBookings).to.deep.equal([]);
-  });
-  it("should be able to return a user's present bookings", function () {
-    expect(user2.curentBookings).to.deep.equal([]);
-  });
-  it("should be able to return just a user's first name", function () {
-    expect(user1.getFirstName()).to.equal("Leatha");
+
+  it("should be able to return a string with the name", () => {
+    expect(user.sayHello()).to.equal("Hello, Leatha Ullrich!");
   });
 });
