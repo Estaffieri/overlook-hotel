@@ -4,7 +4,8 @@ export default class User {
     this.name = user.name
   }
   greetUser() {
-    return 'Welcome, ${this.name}!'
+    let userFirstName = this.name.split(" ")[0]
+    return `Welcome, ${userFirstName}!`;
 
   }
 }

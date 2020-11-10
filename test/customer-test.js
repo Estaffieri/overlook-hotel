@@ -28,6 +28,9 @@ describe("Customer", function () {
   it("should have a name", function () {
     expect(customer1.name).to.equal("Leatha Ullrich");
   });
+  it("should be able to return a string with customer name", function () {
+    expect(customer1.greetUser()).to.equal("Leatha");
+  });
   it("should be able to return a customer's total bookings", function () {
     expect(customer1.totalBookings).to.deep.equal([]);
   });
@@ -39,13 +42,5 @@ describe("Customer", function () {
   });
   it("should be able to return a customer's present bookings", function () {
     expect(customer2.currentBookings).to.deep.equal([]);
-  });
-  it("should be able to return just a customer's first name", function () {
-    expect(customer1.getFirstName()).to.equal("Leatha");
-  });
-  it("should be able sort bookings into the correct arrays", function () {
-      customer1.getBookingStatus(sampleRoomData.rooms, currentDate, sampleBookingData.bookings)
-      expect(customer1.currentBookings.length).to.equal()
-    
   });
 });
