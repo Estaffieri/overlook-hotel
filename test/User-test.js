@@ -4,7 +4,7 @@ import {
 } from "../src/data/test-sample-data";
 import User from "../src/classes/User";
 
-describe.only("User", () => {
+describe("User", () => {
   let user;
   let user1;
 

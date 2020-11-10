@@ -1,30 +1,20 @@
 import User from "./User";
 
 export default class Customer extends User {
-  constructor() {
-    super({id: "manager", name: "Best Manager"})
+  constructor(customer) {
+    super(customer)
     this.currentBookings = [];
     this.totalBookings = [];
     this.pastBookings = [];
     this.upcomingBookings = [];
   }
-  //   getFirstName() {
-  //     return this.name.split(" ")[0];
-  //   }
-  //   getBookingStatus(rooms, currentDate, bookings) {
-  //     rooms.forEach((room) => {
-  //       let roomBooking;
-  //       bookings.find((booking) => {
-  //         if (room.id === booking.id) {
-  //           roomBooking = booking;
-  //         }
-  //       });
-  //       if (room.userID === this.id) {
-  //         this.totalBookings.push(new Booking(room, roomBooking));
-  //       }
-  //     });
-  //     this.sortBookings(currentDate);
-  //   }
+  //need to find booked rooms
+  returnBookings(bookings) {
+    this.totalBookings.push(bookings.filter(booking => {
+      return this.id === booking.userID;
+    }))
+  }
+
 
 //   sortBookings() {
 //     this.allBookings.forEach((booking) => {
