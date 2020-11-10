@@ -7,7 +7,7 @@ import {
 import User from "../src/classes/User";
 import Customer from "../src/classes/Customer";
 
-describe.only("Customer", function () {
+describe("Customer", function () {
   let customer1;
   let customer2;
   let currentDate;
