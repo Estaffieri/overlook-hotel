@@ -156,4 +156,23 @@ describe("Customer", function () {
       }
     ]);
   });
+  it("should return only available rooms of a specfied type", function () {
+    expect(
+      customer1.filterByRoomType(
+        "residential suite",
+        sampleBookingData,
+        sampleRoomData,
+        "2021/01/27"
+      )
+    ).to.deep.equal([
+      {
+        number: 1,
+        roomType: "residential suite",
+        bidet: true,
+        bedSize: "queen",
+        numBeds: 1,
+        costPerNight: 358.4,
+      },
+    ]);
+  });
 });

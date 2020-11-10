@@ -19,7 +19,6 @@ export default class Customer extends User {
     })
   }
   viewTotalBill(bookingData, roomData) {
-    console.log(bookingData, roomData);
     let finalBill = this.viewAllMyBookings(bookingData).reduce((grandTotal, myBooking) => {
       let matchingRoom = roomData.find(room => room.number === myBooking.roomNumber)
       grandTotal += matchingRoom.costPerNight
@@ -44,26 +43,27 @@ export default class Customer extends User {
       return availableRooms;
     }, []);
   }
-  filterBookingsByDate(bookingData, roomData, date) {
-    
+  filterByRoomType(searchedRoomType, bookingData, roomData, date) {
+    let availableRooms = this.findVacencies(bookingData, roomData, date)
+    return availableRooms.filter(room => {
+      return room.roomType === searchedRoomType
+    })
   }
-  filterByRoomType() {
+  //   }
+  //   filterByBedSize() {
 
-  }
-  filterByBedSize() {
+  //   }
+  //   sortByCost() {
 
-  }
-  sortByCost() {
+  //   }
+  //   sortByNumberOfBeds() {
 
-  }
-  sortByNumberOfBeds() {
+  //   }
+  //   bookARoom() {
 
-  }
-  bookARoom() {
+  //   }
+  //   callRoomService() {
 
-  }
-  callRoomService() {
-
-  }
+//   }
 }
 
