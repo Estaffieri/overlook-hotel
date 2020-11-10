@@ -30,6 +30,12 @@ describe("User", function () {
   it("should be able to return a user's total bookings", function () {
     expect(user2.totalBookings).to.deep.equal([]);
   });
+  it("should be able to return a user's past bookings", function () {
+    expect(user2.pastBookings).to.deep.equal([]);
+  });
+  it("should be able to return a user's present bookings", function () {
+    expect(user2.curentBookings).to.deep.equal([]);
+  });
   it("should be able to return just a user's first name", function () {
     expect(user1.getFirstName()).to.equal("Leatha");
   });
