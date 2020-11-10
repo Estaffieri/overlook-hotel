@@ -7,7 +7,7 @@ import {
 import Booking from "../src/classes/Booking";
 import User from "../src/classes/User";
 
-describe("User", function () {
+describe("Booking", function () {
   let user1;
   let user2;
   let currentDate;
@@ -28,10 +28,10 @@ describe("User", function () {
   it("should have a name", function () {
     expect(user1.name).to.equal("Leatha Ullrich");
   });
-  it("should be able to return a user's total bookings", function () {
-    expect(user2.totalBookings).to.deep.equal([]);
-  });
-  it("should be able to return just a user's first name", function () {
-    expect(user1.getFirstName()).to.equal("Leatha");
-  });
+  // it("should be able to return a user's total bookings", function () {
+  //   expect(user2.totalBookings).to.deep.equal([]);
+  // });
+  // it("should be able to return just a user's first name", function () {
+  //   expect(user1.getFirstName()).to.equal("Leatha");
+  // });
 });

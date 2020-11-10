@@ -7,10 +7,12 @@ import User from "../src/classes/User";
 describe("User", () => {
   let user;
   let user1;
+  let user2;
 
   before(() => {
     user = new User(sampleUserData.users[0]);
     user1 = new User(sampleUserData.users[1]);
+    user2 = new User({id : 0, name: "Manager"});
   });
 
   it("should be a function", () => {
@@ -38,5 +40,6 @@ describe("User", () => {
   it("should be able to return a string with the name", () => {
     expect(user.greetUser()).to.equal("Welcome, Leatha!");
     expect(user1.greetUser()).to.equal("Welcome, Rocio!");
+    expect(user2.greetUser()).to.equal("Welcome, Manager!");
   });
 });

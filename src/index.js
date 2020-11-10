@@ -9,7 +9,6 @@ import "./images/search.svg";
 import "./images/warning.svg";
 import {formLoginButton, formUsernameInput, formPasswordInput, formErrorMessage, loginView} from "./domLoader.js";
 import apiCalls from "./apiCalls";
-import UserRepository from "../src/classes/UserRepository.js";
 import User from "./classes/User";
 
 //****========= EVENT LISTENERS =========****}}>
@@ -18,10 +17,11 @@ formLoginButton.addEventListener("click", validateLogin);
 
 //****========= GLOBAL VARIABLES =========****}}>
 
-let currentUser
-let currentBookings
-let bookingsData
-let newBooking = {}
+let userData;
+let bookingData;
+let roomData;
+let user;
+let date;
 
 //****========= +++++++++++++++ =========****}}>
 
