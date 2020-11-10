@@ -24,8 +24,24 @@ export default class Customer extends User {
       grandTotal += matchingRoom.costPerNight
       return grandTotal;
     }, 0).toFixed(2);
-    return Number(finalBill)
+    return +finalBill
 
+  }
+  findVacencies(bookingData, roomData, date) {
+    return roomData.reduce((availableRooms, room) => {
+      let roomBookings = bookingData.filter(booking => {
+        return booking.roomNumber === room.number
+      })
+      if (!roomBookings.length) {
+        availableRooms.push(room)
+      } else {
+        let roomFound = roomBookings.find(booking => booking.date === date)
+        if (!roomFound) {
+          availableRooms.push(room)
+        }
+      }
+      return availableRooms;
+    }, []);
   }
   filterBookingsByDate(bookingData, roomData, date) {
     

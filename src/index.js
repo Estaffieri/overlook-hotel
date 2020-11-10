@@ -36,8 +36,8 @@ function validateLogin(event) {
   if (usernameInput.value.includes("customer") &&
       passwordInput.value === "overlook2020") {
  
-}
-loadCustomerInfo(userID)
+  }
+  loadCustomerInfo(userID)
 }
 
 const changeView = (pageToHide, pageToShow) => {
@@ -46,14 +46,14 @@ const changeView = (pageToHide, pageToShow) => {
 };
 
 function showInfo() {
-  if (event.target.classList.contains("steps-info-button")) {
+  if (event.target.classList.contains(".login-button")) {
     changeView(loginView, customerDashboard);
   }
 }
 
-loadCustomerInfo(userID) {
-    apiCalls.checkData(userID).then(data => {
-        currentUser = new User(data[0])
-    })
-    showInfo()
+function loadCustomerInfo(userID) {
+  apiCalls.checkData(userID).then(data => {
+    user = new User(data[0])
+  })
+  showInfo()
 }
