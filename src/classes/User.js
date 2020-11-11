@@ -1,4 +1,4 @@
-import { apiCalls } from "../apiCalls";
+import  apiCalls  from "../apiCalls";
 
 export default class User {
   constructor(userData) {

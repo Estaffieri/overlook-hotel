@@ -6,38 +6,38 @@ let apiCalls = {
       this.getBookingData(),
       this.getRoomServiceData(),
     ])
-      .then((data) => data)
-      .catch((error) => console.log(error));
+      .then(data => data)
+      .catch(error => console.log(error));
   },
-  getUserData() {
+   getUserData(userID) {
     return fetch(
       "https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users"
     )
-      .then((response) => response.json())
-      .then((data) => data.users)
-      .catch((error) => console.log(error));
+      .then(response => response.json())
+      .then(data => data.users.find(user => user.id === userID))
+      .catch(error => console.log(error));
   },
 
   getRoomData() {
-    fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms")
-      .then((response) => response.json())
-      .then((data) => data.rooms)
-      .catch((error) => console.log(error));
+    return fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms")
+      .then(response => response.json())
+      .then(data => data.rooms)
+      .catch(error => console.log(error));
   },
 
   getBookingData() {
-    fetch("https://fe-apps.https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings.com/api/v1/overlook/1904/rooms/rooms")
-      .then((response) => response.json())
-      .then((data) => data.bookings)
-      .catch((error) => console.log(error));
+    return fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings")
+      .then(response => response.json())
+      .then(data => data.bookings)
+      .catch(error => console.log(error));
   },
   getRoomServiceData() {
-    fetch(
+    return fetch(
       "https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServices"
     )
-      .then((response) => response.json())
-      .then((data) => data.roomServices)
-      .catch((error) => console.log(error));
+      .then(response => response.json())
+      .then(data => data.roomServices)
+      .catch(error => console.log(error));
   },
 
   postNewBooking(booking) {
@@ -55,9 +55,9 @@ let apiCalls = {
         }),
       }
     )
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .then((error) => console.log(error));
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .then(error => console.log(error));
   },
 };
 
