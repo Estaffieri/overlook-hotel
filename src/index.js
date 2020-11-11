@@ -9,7 +9,6 @@ import "./images/search.svg";
 import "./images/warning.svg";
 import {formLoginButton, formUsernameInput, formPasswordInput, formErrorMessage, loginView} from "./domLoader.js";
 import apiCalls from "./apiCalls";
-import UserRepository from "../src/classes/UserRepository.js";
 import User from "./classes/User";
 
 //****========= EVENT LISTENERS =========****}}>
@@ -18,10 +17,11 @@ formLoginButton.addEventListener("click", validateLogin);
 
 //****========= GLOBAL VARIABLES =========****}}>
 
-let currentUser
-let currentBookings
-let bookingsData
-let newBooking = {}
+let userData;
+let bookingData;
+let roomData;
+let user;
+let date;
 
 //****========= +++++++++++++++ =========****}}>
 
@@ -36,8 +36,8 @@ function validateLogin(event) {
   if (usernameInput.value.includes("customer") &&
       passwordInput.value === "overlook2020") {
  
-}
-loadCustomerInfo(userID)
+  }
+  loadCustomerInfo(userID)
 }
 
 const changeView = (pageToHide, pageToShow) => {
@@ -46,14 +46,14 @@ const changeView = (pageToHide, pageToShow) => {
 };
 
 function showInfo() {
-  if (event.target.classList.contains("steps-info-button")) {
+  if (event.target.classList.contains(".login-button")) {
     changeView(loginView, customerDashboard);
   }
 }
 
-loadCustomerInfo(userID) {
-    apiCalls.checkData(userID).then(data => {
-        currentUser = new User(data[0])
-    })
-    showInfo()
+function loadCustomerInfo(userID) {
+  apiCalls.checkData(userID).then(data => {
+    user = new User(data[0])
+  })
+  showInfo()
 }
