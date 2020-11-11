@@ -1,4 +1,5 @@
 import { apiCalls } from "../apiCalls";
+import moment from "moment";
 import User from "./User";
 
 export default class Customer {
@@ -6,32 +7,23 @@ export default class Customer {
     this.currentBookings = [];
     this.upcomingBookings = [];
     this.pastBookings = [];
+    this.allBookings = [];
     this.totalSpent = [];
   }
-  determineBooking(roomData, date, bookingData) {
-    trips.forEach((trip) => {
-      let hotelBookings;
-      bookingData.find(() => {});
-      if (bookingData.userID === this.id) {
-        this.allTrips.push(new Trip(trip, tripDestination));
-      }
-    });
-    this.sortTrips(currentDate);
+  determineBookingStatus(booking, currentDate) {
+    let compareDate = moment(new Date(currentDate)).format("YYYY/MM/DD");
+    if (moment(new Date(compareDate)).isAfter(moment(new Date(booking.date)),"day")) {
+      this.pastBookings.push(booking);
+    } 
+    if (moment(new Date(compareDate)).isBefore(moment(new Date(booking.date)), "day")) {
+      this.upcomingBookings.push(booking);
+    };
+    if (compareDate === booking.date) {
+      this.currentBookings.push(booking);
+    } 
+    this.allBookings.push(booking)
   }
 
-  sortBookings(currentDate) {
-    this.blueBird.forEach((booking) => {
-      if (trip.determineTripStatus(currentDate) === "pending") {
-        this.pendingTrips.push(trip);
-      } else if (trip.determineTripStatus(currentDate) === "past") {
-        this.pastTrips.push(trip);
-      } else if (trip.determineTripStatus(currentDate) === "upcoming") {
-        this.futureTrips.push(trip);
-      } else if (trip.determineTripStatus(currentDate) === "present") {
-        this.currentLocation = trip.destinationData.destination;
-      }
-    });
-  }
   findVacencies(bookingData, roomData, date) {
     return roomData.reduce((availableRooms, room) => {
       let roomBookings = bookingData.filter((booking) => {

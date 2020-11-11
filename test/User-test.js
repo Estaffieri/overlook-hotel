@@ -73,5 +73,19 @@ describe("User", () => {
       user1.viewTotalBill(sampleBookingData, sampleRoomData)
     ).to.equal(835.78);
   });
-
+  it("should sort a customer's bookings into the correct arrays", function () {
+    user.sortBookings(sampleBookingData, "02/05/2020")
+    expect(user.pastBookings.length).to.equal(0);
+    expect(user.allBookings.length).to.equal(1);
+    expect(user.upcomingBookings.length).to.equal(0)
+    expect(user.currentBookings).to.deep.equal([
+      {
+        id: "5fwrgu4i7k55hl6t8",
+        userID: 1,
+        date: "2020/02/05",
+        roomNumber: 12,
+        roomServiceCharges: [],
+      },
+    ]);
+  });
 });

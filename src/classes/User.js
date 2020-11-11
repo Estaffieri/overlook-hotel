@@ -10,6 +10,13 @@ export default class User extends Customer {
     let userFirstName = this.name.split(" ")[0];
     return `Welcome, ${userFirstName}!`;
   }
+  sortBookings(bookingData, currentDate) {
+    let allBookings = this.viewAllMyBookings(bookingData)
+    allBookings.forEach(booking => {
+      this.determineBookingStatus(booking, currentDate)
+    })
+
+  }
   viewAllMyBookings(bookingData) {
     let myBookings = bookingData.filter((booking) => {
       return booking.userID === this.id;
