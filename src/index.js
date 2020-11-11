@@ -8,7 +8,7 @@ import "./images/hotel.svg";
 import "./images/search.svg";
 import "./images/warning.svg";
 import moment from "moment";
-import { formLoginButton, formUsernameInput, formPasswordInput, formErrorMessage, loginView, customerDashboard, searchInput, domRender } from "./domLoader.js";
+import { formLoginButton, formUsernameInput, formPasswordInput, formErrorMessage, loginView, dashboard, searchInput, domRender } from "./domLoader.js";
 import apiCalls from "./apiCalls";
 import User from "./classes/User";
 import Customer from "./classes/Customer";

@@ -1,6 +1,8 @@
 import { expect } from "chai";
 import {
   sampleUserData,
+  sampleBookingData,
+  sampleRoomData
 } from "../src/data/test-sample-data";
 import User from "../src/classes/User";
 
@@ -42,4 +44,28 @@ describe("User", () => {
     expect(user1.greetUser()).to.equal("Welcome, Rocio!");
     expect(user2.greetUser()).to.equal("Welcome, Manager!");
   });
+  it("should be able to return a user's booking history", function () {
+    expect(user1.viewAllMyBookings(sampleBookingData)).to.deep.equal([
+      {
+        id: "5fwrgu4i7k55hl7td",
+        userID: 2,
+        date: "2020/01/27",
+        roomNumber: 1,
+        roomServiceCharges: [],
+      },
+      {
+        id: "5fwrgu4i7k56hl7td",
+        userID: 2,
+        date: "2020/01/27",
+        roomNumber: 2,
+        roomServiceCharges: [],
+      },
+    ]);
+  });
+  it("should be able to return a users's total bill", function () {
+    expect(
+      user1.viewTotalBill(sampleBookingData, sampleRoomData)
+    ).to.equal(835.78);
+  });
+
 });
