@@ -38,5 +38,34 @@ describe("Manager", () => {
   it("should return a percentage of occupied rooms", () => {
     expect(manager.calculateOccupancy(sampleBookingData, sampleRoomData, "2020/01/27")).to.equal(17)
   });
+  it("should return an array of the booked rooms for a given date", () => {
+    expect(
+      manager.showBookedRooms(sampleBookingData, sampleRoomData, "2020/01/27")
+    ).to.deep.equal([{
+      bedSize: "queen",
+      bidet: true,
+      costPerNight: 358.4,
+      numBeds: 1,
+      number: 1,
+      roomType: "residential suite"
+    },
+    {
+      bedSize: "full",
+      bidet: false,
+      costPerNight: 477.38,
+      numBeds: 2,
+      number: 2,
+      roomType: "suite"
+    }]);
+  });
+  it("should return the summed revenue for a given date", () => {
+    expect(
+      manager.totalRevenueForToday(
+        sampleBookingData,
+        sampleRoomData,
+        "2020/01/27"
+      )
+    ).to.be.equal();
+  });
 });
 
