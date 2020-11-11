@@ -18,7 +18,7 @@ import Customer from "./classes/Customer";
 formLoginButton.addEventListener("click", validateLogin);
 
 //****========= GLOBAL VARIABLES =========****}}>
-
+let allUsers;
 let bookingData;
 let roomService;
 let roomData;
@@ -30,7 +30,7 @@ let date = moment().format("YYYY/MM/DD");
 function validateLogin(event) {
   event.preventDefault()
   let userType = !formUsernameInput.value ? undefined : formUsernameInput.value.split(/([0-9])/)[0];
-  let userNum = !formUsernameInput.value ? undefined : +formUsernameInput.value.split(/([0-9])/)[1];
+  let userNum = userType === "manager" ? undefined : +formUsernameInput.value.substring(8, 11);
   let password = formPasswordInput.value;
   if (userType === "customer" && userNum > 0 && userNum < 51 && password === "overlook2020") {
     loadCustomerInfo(userNum, event)
