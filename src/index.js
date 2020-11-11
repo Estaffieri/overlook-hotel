@@ -7,7 +7,8 @@ import "./images/desk-bell.svg";
 import "./images/hotel.svg";
 import "./images/search.svg";
 import "./images/warning.svg";
-import { formLoginButton, formUsernameInput, formPasswordInput, formErrorMessage, loginView, customerDashboard, searchInput } from "./domLoader.js";
+import moment from "moment";
+import { formLoginButton, formUsernameInput, formPasswordInput, formErrorMessage, loginView, customerDashboard, searchInput, domRender } from "./domLoader.js";
 import apiCalls from "./apiCalls";
 import User from "./classes/User";
 import Customer from "./classes/Customer";
@@ -22,7 +23,7 @@ let bookingData;
 let roomService;
 let roomData;
 let user; //holds userData
-let date;
+let date = moment().format("YYYY/MM/DD");
 
 //****========= +++++++++++++++ =========****}}>
 
@@ -54,6 +55,7 @@ const changeView = (pageToHide, pageToShow) => {
 function showInfo(event) {
   if (event.target.classList.contains("login-button")) {
     changeView(loginView, customerDashboard);
+    domRender()
   }
 }
 
