@@ -64,9 +64,7 @@ const changeView = (pageToHide, pageToShow) => {
 };
 
 function showInfo(event) {
-  console.log("classlist", event.target.classList);
   if (event.target.classList.contains("login-button") || event.target.classList.contains("post")) {
-    console.log("where you wanna be");
     changeView(loginView, dashboard);
     searchOptions.classList.remove("hide")
     user.sortBookings(bookingData, date)
@@ -78,9 +76,7 @@ function showInfo(event) {
 }
 
 function loadCustomerInfo(userID, event, userType) {
-  console.log("1");
   if (userType === "customer") {
-    console.log("2");
     apiCalls.checkData(userID).then((data) => {
       user = new User(data[0]);
       bookingData = data[2];
@@ -89,7 +85,6 @@ function loadCustomerInfo(userID, event, userType) {
       showInfo(event);
     });
   } else {
-    console.log("oh no");
     apiCalls.checkManagerData().then((data) => {
       user = new Manager({id: 0, name: "manager"});
       allUsers = data[0];
