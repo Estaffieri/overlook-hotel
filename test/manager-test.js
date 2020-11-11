@@ -9,6 +9,7 @@ import {
 
 describe("Manager", () => {
   let manager;
+  let date;
 
   before(() => {
     manager = new Manager(sampleUserData[0]);
@@ -18,7 +19,7 @@ describe("Manager", () => {
     expect(Manager).to.be.a("function");
   });
 
-  it("should instantiate a user object", () => {
+  it("should instantiate a manger object", () => {
     expect(manager).to.be.an.instanceOf(Manager);
   });
 
@@ -28,6 +29,11 @@ describe("Manager", () => {
 
   it("should have a name", () => {
     expect(manager.name).to.equal("Manager");
+  });
+  it("should return an array of available rooms given a date", () => {
+    expect(
+      manager.allAvailableRooms(sampleBookingData, sampleRoomData, "2020/01/27")
+    ).to.equal(10);
   });
 });
 

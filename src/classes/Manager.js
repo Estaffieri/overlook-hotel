@@ -1,16 +1,18 @@
-import User from "./User";
+import Customer from "./Customer";
 
 
-export default class Manager extends User {
-  constructor(userInfo) {
-    super(userInfo)
+export default class Manager {
+  constructor(allUserInfo) {
     this.id = 0;
     this.name = "Manager";
+   
   }
   allAvailableRooms(bookingData, roomData, date) {
-    return this.showVacancies(booking, rooms, date).length
-
+    let customer = new Customer({id: this.id, name: this.name})
+    return customer.findVacencies(bookingData, roomData, date).length;
   }
+
+  
   totalRevenueForToday(booking, rooms, date) {
     return +this.showBookedRooms(booking, rooms, date)
       .reduce((totalRevenueForToday, room) => {
