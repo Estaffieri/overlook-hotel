@@ -113,15 +113,16 @@ export const domRender = (user, roomData, bookingData) => {
 
 export const populateResults = (searchResults) => {
   let resultsContainer = document.querySelector(".results");
-  if(!searchResults.length){
+  if (!searchResults.length) {
     resultsContainer.innerHTML += `<h4>No results found for that day</h4>`
   } else {
     searchResults.forEach(room => {
       resultsContainer.innerHTML += `
-      <h4 id="${room.number}">Room#${room.number}, ${room.roomType}, 
+      <h4 class="result">Room#${room.number}, ${room.roomType}, 
       Bidet: ${room.bidet}, 
       Beds: ${room.numBeds} ${room.bedSize}, 
-      Cost Per Night: $${room.costPerNight}</h4>`;
+      Cost Per Night: $${room.costPerNight}</h4>
+      <h5 class="post" id="${room.number}">Click here to book</h5>`;
     })
   }
 }

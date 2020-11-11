@@ -32,6 +32,7 @@ import Manager from "./classes/Manager";
 
 formLoginButton.addEventListener("click", validateLogin);
 searchButton.addEventListener("click", displayResults);
+searchResultsView.addEventListener("click", determineClick);
 
 //****========= GLOBAL VARIABLES =========****}}>
 let allUsers;
@@ -63,7 +64,9 @@ const changeView = (pageToHide, pageToShow) => {
 };
 
 function showInfo(event) {
-  if (event.target.classList.contains("login-button")) {
+  console.log("classlist", event.target.classList);
+  if (event.target.classList.contains("login-button") || event.target.classList.contains("post")) {
+    console.log("where you wanna be");
     changeView(loginView, dashboard);
     searchOptions.classList.remove("hide")
     user.sortBookings(bookingData, date)
@@ -75,7 +78,9 @@ function showInfo(event) {
 }
 
 function loadCustomerInfo(userID, event, userType) {
+  console.log("1");
   if (userType === "customer") {
+    console.log("2");
     apiCalls.checkData(userID).then((data) => {
       user = new User(data[0]);
       bookingData = data[2];
@@ -84,6 +89,7 @@ function loadCustomerInfo(userID, event, userType) {
       showInfo(event);
     });
   } else {
+    console.log("oh no");
     apiCalls.checkManagerData().then((data) => {
       user = new Manager({id: 0, name: "manager"});
       allUsers = data[0];
@@ -112,4 +118,18 @@ function createNewBooking(booking) {
   };
   apiCalls.postNewBooking(newPostObject)
 
+}
+
+function determineClick(event) {
+  event.preventDefault()
+  if(event.target.nodeName === "H5") {
+    let searchDate = moment(searchInput.value).format('YYYY/MM/DD')
+    let newBooking = {userId: user.id, date: searchDate, roomNumber: +event.target.id}
+    apiCalls.postNewBooking(newBooking).then(data => reloadData(data, event))
+  }
+}
+const reloadData = (data, event) => {
+  bookingData.push(data)
+  searchResultsView.classList.add("hide")
+  loadCustomerInfo(user.id, event, "customer")
 }
