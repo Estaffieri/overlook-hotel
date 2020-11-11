@@ -9,6 +9,16 @@ let apiCalls = {
       .then(data => data)
       .catch(error => console.log(error));
   },
+  checkManagerData() {
+    return Promise.all([
+      this.getAllUserData(),
+      this.getRoomData(),
+      this.getBookingData(),
+      this.getRoomServiceData(),
+    ])
+      .then(data => data)
+      .catch(error => console.log(error));
+  },
   getUserData(userID) {
     return fetch(
       "https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users"
@@ -17,6 +27,15 @@ let apiCalls = {
       .then(data => data.users.find(user => user.id === userID))
       .catch(error => console.log(error));
   },
+    getAllUserData() {
+    return fetch(
+      "https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users"
+    )
+      .then(response => response.json())
+      .then(data => data)
+      .catch(error => console.log(error));
+  },
+
 
   getRoomData() {
     return fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms")

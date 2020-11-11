@@ -41,7 +41,7 @@ export const domRender = (user, roomData, bookingData) => {
           <section tabindex="0" class="welcome-banner" aria-label="Welcome-to-the-Overlook-Hotel-this-is-your-dashboard">
             <div class="welcome-wrapper">
                 <img tabindex="0" class="user-icon" id="icon" src="./images/user.svg" alt="vector-image-of-a-old-fashion-suitcase">
-                <h3>${user.greetUser()}</h3>
+                <h3>Welcome, Manager!</h3>
                 <article class="total-spend">
                 </article>
                 <button type="submit" name="log-Out-button" class="log-Out-button" aria-label="log-out-as-a-customer-or-manager">LOG OUT</button>

@@ -12,6 +12,7 @@ import { formLoginButton, formUsernameInput, formPasswordInput, formErrorMessage
 import apiCalls from "./apiCalls";
 import User from "./classes/User";
 import Customer from "./classes/Customer";
+import Manager from "./classes/Manager";
 
 //****========= EVENT LISTENERS =========****}}>
 
@@ -33,19 +34,13 @@ function validateLogin(event) {
   let userNum = userType === "manager" ? undefined : +formUsernameInput.value.substring(8, 11);
   let password = formPasswordInput.value;
   if (userType === "customer" && userNum > 0 && userNum < 51 && password === "overlook2020") {
-    loadCustomerInfo(userNum, event)
-  // } else if (userType === "manager" && !userNum && password === "overlook2020") {
-    //render MangerDashboard
+    loadCustomerInfo(userNum, event, userType)
+  } else if (userType === "manager" && !userNum && password === "overlook2020") {
+    loadCustomerInfo(userNum, event, userType);
   } else {
-    console.log(userType, typeof userNum)
     alert("Please enter a valid username and password")
   }
 }
-//to-do: Render CustomerDashboard
-//fetch information from the api by UserId
-//use fetchedInfo to update global variables
-//display dashboard
-
 
 const changeView = (pageToHide, pageToShow) => {
   pageToHide.classList.add("hide");
@@ -55,21 +50,30 @@ const changeView = (pageToHide, pageToShow) => {
 function showInfo(event) {
   if (event.target.classList.contains("login-button")) {
     changeView(loginView, dashboard);
-    console.log(user)
-    domRender(user, roomData, bookingData )
+    domRender(user, roomData, bookingData)
   }
 }
 
-function loadCustomerInfo(userID, event) {
-  apiCalls.checkData(userID).then(data => {
-    console.log(data)
-    user = new User(data[0])
-    bookingData = data[2]
-    roomData = data[1]
-    roomService = data[3]
-    showInfo(event);
-  })
-  // showInfo(event)
+function loadCustomerInfo(userID, event, userType) {
+  if (userType === "customer") {
+    apiCalls.checkData(userID).then((data) => {
+      user = new User(data[0]);
+      bookingData = data[2];
+      roomData = data[1];
+      roomService = data[3];
+      showInfo(event);
+    });
+  } else {
+    apiCalls.checkManagerData().then((data) => {
+      user = new Manager({id: 0, name: "manager"});
+      allUsers = data[0];
+      bookingData = data[2];
+      roomData = data[1];
+      roomService = data[3];
+      showInfo(event);
+    });
+
+  }
 }
 
 function createNewBooking(booking) { 
