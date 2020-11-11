@@ -8,7 +8,7 @@ import "./images/hotel.svg";
 import "./images/search.svg";
 import "./images/warning.svg";
 import moment from "moment";
-import { formLoginButton, formUsernameInput, formPasswordInput, formErrorMessage, loginView, dashboard, searchInput, domRender } from "./domLoader.js";
+import { formLoginButton, formUsernameInput, formPasswordInput, formErrorMessage, loginView, dashboard, searchInput, domRender, upcoming, current, past, displayBookingCards } from "./domLoader.js";
 import apiCalls from "./apiCalls";
 import User from "./classes/User";
 import Customer from "./classes/Customer";
@@ -50,7 +50,11 @@ const changeView = (pageToHide, pageToShow) => {
 function showInfo(event) {
   if (event.target.classList.contains("login-button")) {
     changeView(loginView, dashboard);
+    user.sortBookings(bookingData, date)
     domRender(user, roomData, bookingData)
+    displayBookingCards("current", user.currentBookings)
+    displayBookingCards("past", user.pastBookings);
+    displayBookingCards("upcoming", user.upcomingBookings);
   }
 }
 
