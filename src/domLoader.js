@@ -6,10 +6,10 @@ export const formPasswordInput = document.querySelector("#password-input");
 export const formLoginButton = document.querySelector(".login-button");
 export const loginView = document.querySelector(".login-view");
 export const dashboard = document.querySelector(".dashboard-view");
-export const searchInput = document.querySelector(".search-input");
-export const upcoming = document.querySelector(".upcoming-bookings");
-export const current = document.querySelector(".current-bookings");
-export const past = document.querySelector(".past-bookings");
+export const searchInput = document.querySelector("#search-input");
+export const searchButton = document.querySelector(".search-button");
+export const searchResultsView = document.querySelector(".search-results-view")
+export const searchOptions = document.querySelector(".search-input-area")
 
 
 export const displayBookingCards = (element, bookings) => {
@@ -58,13 +58,9 @@ export const domRender = (user, roomData, bookingData) => {
                 <article class="past-bookings">
                   <h4>Past Bookings: </h4>
                 </article>
-
-
                 <button type="submit" name="log-Out-button" class="log-Out-button" aria-label="log-out-as-a-customer-or-manager">LOG OUT</button>
            </div>
           </div>
-           <label tabindex="0" for="search-input">Search:</label>
-            <input id="search-input" type="date"  aria-label="search-field-for-rooms-or-bookings-input" placeholder="search by date"></input>-
         </header>
 `;
   } else {
@@ -113,4 +109,19 @@ export const domRender = (user, roomData, bookingData) => {
 
   }
 
+}
+
+export const populateResults = (searchResults) => {
+  let resultsContainer = document.querySelector(".results");
+  if(!searchResults.length){
+    resultsContainer.innerHTML += `<h4>No results found for that day</h4>`
+  } else {
+    searchResults.forEach(room => {
+      resultsContainer.innerHTML += `
+      <h4 id="${room.number}">Room#${room.number}, ${room.roomType}, 
+      Bidet: ${room.bidet}, 
+      Beds: ${room.numBeds} ${room.bedSize}, 
+      Cost Per Night: $${room.costPerNight}</h4>`;
+    })
+  }
 }

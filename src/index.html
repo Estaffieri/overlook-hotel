@@ -34,6 +34,18 @@
     <main>
       <div class="dashboard-view">
       </div>
+      <section class="search-input-area hide">
+        <label tabindex="0" for="search-input">Search:</label>
+        <input id="search-input" type="date"  aria-label="search-field-for-rooms-or-bookings-input" placeholder="search by date"></input>
+        <button class="search-button" type="submit">SEARCH</button>
+      </section>
+      <div class="search-results-view hide">
+        <img tabindex="0" class="user-icon" id="icon" src="./images/user.svg" alt="vector-image-of-a-old-fashion-suitcase">
+        <h3>Search Results:</h3>
+        <article class="results">
+        </article>
+        <button type="submit" name="go-back-button" class="go-back-button" aria-label="return to dashboard view">GO BACK</button>
+      </div>
     </main>
    </body>
 </html>
