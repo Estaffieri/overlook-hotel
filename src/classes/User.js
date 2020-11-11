@@ -20,7 +20,7 @@ export default class User {
     let finalBill = this.viewAllMyBookings(bookingData)
       .reduce((grandTotal, myBooking) => {
         let matchingRoom = roomData.find(
-          (room) => room.number === parseInt(myBooking.roomNumber)
+          (room) => room.number === +(myBooking.roomNumber)
         );
         grandTotal += matchingRoom.costPerNight;
         return grandTotal;

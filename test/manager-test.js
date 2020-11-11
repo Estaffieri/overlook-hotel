@@ -35,5 +35,8 @@ describe("Manager", () => {
       manager.allAvailableRooms(sampleBookingData, sampleRoomData, "2020/01/27")
     ).to.equal(10);
   });
+  it("should return a percentage of occupied rooms", () => {
+    expect(manager.calculateOccupancy(sampleBookingData, sampleRoomData, "2020/01/27")).to.equal(17)
+  });
 });
 
