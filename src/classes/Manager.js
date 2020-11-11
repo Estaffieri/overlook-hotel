@@ -17,7 +17,7 @@ export default class Manager {
     let occupiedRooms = totalRooms - availableRooms
     return +(occupiedRooms / totalRooms).toFixed(2) * 100
   }
-  showBookedRooms(bookingData, roomData, date) {
+  getBookedRooms(bookingData, roomData, date) {
     return roomData.reduce((occupiedRooms, room) => {
       let roomBookings = bookingData.filter(booking => {
         return booking.roomNumber === room.number
@@ -32,12 +32,14 @@ export default class Manager {
     }, []);
   }
 
-//   totalRevenueForToday(bookingData, roomData, date)) {
-//     return +this.showBookedRooms(bookingData, roomData, date))
-//       .reduce((totalRevenueForToday, room) => {
-//         totalRevenueForToday += room.costPerNight;
-//         return totalRevenueForToday;
-//       }, 0)
-//       .toFixed(2);
-//   }
+  totalRevenueForToday(bookingData, roomData, date) {
+    let bookedRooms = this.getBookedRooms(bookingData, roomData, date)
+    return +bookedRooms
+      .reduce((totalRevenue, room) => {
+        totalRevenue += room.costPerNight;
+
+        return totalRevenue;
+      }, 0)
+      .toFixed(2);
+  }
 }

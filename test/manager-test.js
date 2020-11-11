@@ -40,7 +40,7 @@ describe("Manager", () => {
   });
   it("should return an array of the booked rooms for a given date", () => {
     expect(
-      manager.showBookedRooms(sampleBookingData, sampleRoomData, "2020/01/27")
+      manager.getBookedRooms(sampleBookingData, sampleRoomData, "2020/01/27")
     ).to.deep.equal([{
       bedSize: "queen",
       bidet: true,
@@ -65,7 +65,7 @@ describe("Manager", () => {
         sampleRoomData,
         "2020/01/27"
       )
-    ).to.be.equal();
+    ).to.equal(835.78);
   });
 });
 
