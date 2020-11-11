@@ -16,12 +16,12 @@ export default class User {
     return myBookings.sort((currentBooking, nextBooking) => {
       return currentBooking.date < nextBooking.date ? -1 : 1;
     });
-  }
+  } 
   viewTotalBill(bookingData, roomData) {
     let finalBill = this.viewAllMyBookings(bookingData)
       .reduce((grandTotal, myBooking) => {
         let matchingRoom = roomData.find(
-          (room) => room.number === myBooking.roomNumber
+          (room) => room.number === parseInt(myBooking.roomNumber)
         );
         grandTotal += matchingRoom.costPerNight;
         return grandTotal;

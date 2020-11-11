@@ -8,9 +8,8 @@ export const loginView = document.querySelector(".login-view");
 export const dashboard = document.querySelector(".dashboard-view");
 export const searchInput = document.querySelector(".search-input");
 
-export const domRender = (user) => {
-  dashboard.innerHTML = 
-  `      <div class="customer-dashboard-view">
+export const domRender = (user, roomData, bookingData) => {
+  dashboard.innerHTML = `      <div class="customer-dashboard-view">
         <header tabindex="0" class="customer-dashboard">
           <img tabindex="0" class="hotel-icon" id="icon" src="./images/hotel.svg" alt="vector-image-of-a-square-hotel-with-windows">
           <div class="date-container">
@@ -21,15 +20,15 @@ export const domRender = (user) => {
                 <img tabindex="0" class="user-icon" id="icon" src="./images/user.svg" alt="vector-image-of-a-old-fashion-suitcase">
                 <h3>${user.greetUser()}</h3>
                 <article class="total-spend">
-                  <h4>Total Spend: $${}</h4>
+                  <h4>Total Spend: $${user.viewTotalBill(bookingData, roomData)}</h4>
                 </article>
                 <button type="submit" name="log-Out-button" class="log-Out-button" aria-label="log-out-as-a-customer-or-manager">LOG OUT</button>
            </div>
           </section>
           </div>
            <label tabindex="0" for="search-input">Search:</label>
-            <input id="search-input" type="text"  aria-label="search-field-for-rooms-or-bookings-input" placeholder="Customer or Manager username"></input>-
+            <input id="search-input" type="date"  aria-label="search-field-for-rooms-or-bookings-input" placeholder="search by date"></input>-
         </header>
-`
+`;
 
 }

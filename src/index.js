@@ -54,19 +54,22 @@ const changeView = (pageToHide, pageToShow) => {
 
 function showInfo(event) {
   if (event.target.classList.contains("login-button")) {
-    changeView(loginView, customerDashboard);
-    domRender()
+    changeView(loginView, dashboard);
+    console.log(user)
+    domRender(user, roomData, bookingData )
   }
 }
 
 function loadCustomerInfo(userID, event) {
   apiCalls.checkData(userID).then(data => {
+    console.log(data)
     user = new User(data[0])
     bookingData = data[2]
     roomData = data[1]
     roomService = data[3]
+    showInfo(event);
   })
-  showInfo(event)
+  // showInfo(event)
 }
 
 function createNewBooking(booking) { 
