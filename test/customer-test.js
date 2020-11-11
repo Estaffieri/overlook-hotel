@@ -19,18 +19,6 @@ describe("Customer", function () {
   it("should be a function", function () {
     expect(Customer).to.be.a("function");
   });
-  it("should be an instance of Customer", function () {
-    expect(customer1).to.be.an.instanceof(User);
-  });
-  it("should have an id", function () {
-    expect(customer1.id).to.equal(1);
-  });
-  it("should have a name", function () {
-    expect(customer1.name).to.equal("Leatha Ullrich");
-  });
-  it("should be able to return a welcome message", function () {
-    expect(customer1.greetUser()).to.equal("Welcome, Leatha!");
-  });
   it("should be able to return a customer's booking history", function () {
     expect(customer2.viewAllMyBookings(sampleBookingData)).to.deep.equal([{
       id: "5fwrgu4i7k55hl7td",

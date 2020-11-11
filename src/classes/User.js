@@ -1,6 +1,8 @@
+import Customer from "./Customer";
 
-export default class User {
+export default class User extends Customer {
   constructor(userData) {
+    super(userData)
     this.id = userData.id;
     this.name = userData.name;
   }

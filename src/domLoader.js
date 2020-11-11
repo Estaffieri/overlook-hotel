@@ -21,16 +21,40 @@ export const domRender = (user, roomData, bookingData) => {
                 <img tabindex="0" class="user-icon" id="icon" src="./images/user.svg" alt="vector-image-of-a-old-fashion-suitcase">
                 <h3>${user.greetUser()}</h3>
                 <article class="total-spend">
-                  <h4>Total Spend: $${user.viewTotalBill(bookingData, roomData)}</h4>
+                  <h4>Total Spend: $${user.viewTotalBill(
+                    bookingData,
+                    roomData
+                  )}</h4>
                 </article>
                 <button type="submit" name="log-Out-button" class="log-Out-button" aria-label="log-out-as-a-customer-or-manager">LOG OUT</button>
            </div>
+                      <section class="overlook-overview">
+                <article class="total-rooms-avail">
+                <h4>Total rooms availiable today: ${user.allAvailableRooms(
+                  bookingData,
+                  roomData,
+                  moment().format("YYYY/MM/DD")
+                )}</h4>
+                </article>
+                <article class="todays-revenue">
+                <h4> Total revenue for today: ${user.totalRevenueForToday(
+                  bookingData,
+                  roomData,
+                  moment().format("YYYY/MM/DD")
+                )} </h4>
+                </article>
+                <article class="percent-occupied">
+                <h4>We are at ${user.calculateOccupancy(
+                  bookingData,
+                  roomData,
+                  moment().format("YYYY/MM/DD")
+                )}% occupancy</h4>
           </section>
           </div>
            <label tabindex="0" for="search-input">Search:</label>
             <input id="search-input" type="date"  aria-label="search-field-for-rooms-or-bookings-input" placeholder="search by date"></input>-
         </header>
-`
+`;
   } else {
     dashboard.innerHTML = `      <div class="manager-dashboard-view">
         <header tabindex="0" class="manager-dashboard">
