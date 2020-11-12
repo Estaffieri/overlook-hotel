@@ -5,7 +5,7 @@
 *:after,
 *:before {
 box-sizing: border-box;
-border: 1px solid black;
+// border: 1px solid black;
 margin: 0;
 padding: 0;
 }
@@ -90,6 +90,10 @@ div.login-form-container {
     font-size: 3vw;
     opacity: 75%;
     padding-left: 1vw;
+}
+
+.search-button {
+    width: 8rem;
 }
 
 //============ Media Queries ============>

@@ -5,6 +5,7 @@ import {
   sampleRoomData
 } from "../src/data/test-sample-data";
 import User from "../src/classes/User";
+import Customer from "../src/classes/Customer";
 
 describe("User", () => {
   let user;
@@ -24,15 +25,20 @@ describe("User", () => {
   it("should instantiate a user object", () => {
     expect(user).to.be.an.instanceOf(User);
   });
-
+  it("should be an instance of Customer", function () {
+    expect(user1).to.be.an.instanceof(Customer);
+  });
   it("should have an id", () => {
     expect(user1.id).to.equal(2);
   });
-
   it("should have a name", () => {
     expect(user1.name).to.equal("Rocio Schuster");
   });
-
+  it("should have booking arrays", function () {
+    expect(user1.currentBookings).to.deep.equal([]);
+    expect(user1.pastBookings).to.deep.equal([]);
+    expect(user1.upcomingBookings).to.deep.equal([]);
+  });
   it("should be able to have a different id and name", () => {
     user = new User(sampleUserData[0]);
     expect(user.id).to.equal(1);
@@ -67,5 +73,19 @@ describe("User", () => {
       user1.viewTotalBill(sampleBookingData, sampleRoomData)
     ).to.equal(835.78);
   });
-
+  it("should sort a customer's bookings into the correct arrays", function () {
+    user.sortBookings(sampleBookingData, "02/05/2020")
+    expect(user.pastBookings.length).to.equal(0);
+    expect(user.allBookings.length).to.equal(1);
+    expect(user.upcomingBookings.length).to.equal(0)
+    expect(user.currentBookings).to.deep.equal([
+      {
+        id: "5fwrgu4i7k55hl6t8",
+        userID: 1,
+        date: "2020/02/05",
+        roomNumber: 12,
+        roomServiceCharges: [],
+      },
+    ]);
+  });
 });

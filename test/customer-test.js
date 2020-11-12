@@ -19,33 +19,22 @@ describe("Customer", function () {
   it("should be a function", function () {
     expect(Customer).to.be.a("function");
   });
-  it("should be an instance of Customer", function () {
-    expect(customer1).to.be.an.instanceof(User);
-  });
-  it("should have an id", function () {
-    expect(customer1.id).to.equal(1);
-  });
-  it("should have a name", function () {
-    expect(customer1.name).to.equal("Leatha Ullrich");
-  });
-  it("should be able to return a welcome message", function () {
-    expect(customer1.greetUser()).to.equal("Welcome, Leatha!");
-  });
   it("should be able to return a customer's booking history", function () {
-    expect(customer2.viewAllMyBookings(sampleBookingData)).to.deep.equal([{
-      id: "5fwrgu4i7k55hl7td",
-      userID: 2,
-      date: "2020/01/27",
-      roomNumber: 1,
-      roomServiceCharges: [],
-    },
-    {
-      id: "5fwrgu4i7k56hl7td",
-      userID: 2,
-      date: "2020/01/27",
-      roomNumber: 2,
-      roomServiceCharges: [],
-    }
+    expect(customer2.viewAllMyBookings(sampleBookingData)).to.deep.equal([
+      {
+        id: "5fwrgu4i7k55hl7td",
+        userID: 2,
+        date: "2020/01/27",
+        roomNumber: 1,
+        roomServiceCharges: [],
+      },
+      {
+        id: "5fwrgu4i7k56hl7td",
+        userID: 2,
+        date: "2020/01/27",
+        roomNumber: 2,
+        roomServiceCharges: [],
+      },
     ]);
   });
   it("should be able to return a customer's total bill", function () {
@@ -153,7 +142,7 @@ describe("Customer", function () {
         bedSize: "queen",
         numBeds: 1,
         costPerNight: 429.44,
-      }
+      },
     ]);
   });
   it("should return only available rooms of a specfied type", function () {
@@ -186,5 +175,28 @@ describe("Customer", function () {
     ).to.equal(
       "Oops! Looks like we don't have any rooms of that type. Please try again."
     );
+  });
+  it("should sort bookings into correct arrays based a date", function () {
+    customer2.determineBookingStatus(
+      {
+        id: "5fwrgu4i7k55hl7td",
+        userID: 2,
+        date: "2020/01/27",
+        roomNumber: 1,
+        roomServiceCharges: [],
+      },
+      "06/01/2020"
+    );
+    expect(customer2.pastBookings.length).to.equal(1);
+    expect(customer2.allBookings.length).to.equal(1);
+    expect(customer2.pastBookings).to.deep.equal([
+      {
+        id: "5fwrgu4i7k55hl7td",
+        userID: 2,
+        date: "2020/01/27",
+        roomNumber: 1,
+        roomServiceCharges: [],
+      },
+    ]);
   });
 });

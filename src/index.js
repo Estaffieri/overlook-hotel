@@ -8,7 +8,21 @@ import "./images/hotel.svg";
 import "./images/search.svg";
 import "./images/warning.svg";
 import moment from "moment";
-import { formLoginButton, formUsernameInput, formPasswordInput, formErrorMessage, loginView, dashboard, searchInput, domRender } from "./domLoader.js";
+import {
+  formLoginButton,
+  formUsernameInput,
+  formPasswordInput,
+  formErrorMessage,
+  loginView,
+  dashboard,
+  searchInput,
+  domRender,
+  displayBookingCards,
+  searchButton,
+  searchOptions,
+  searchResultsView,
+  populateResults,
+} from "./domLoader.js";
 import apiCalls from "./apiCalls";
 import User from "./classes/User";
 import Customer from "./classes/Customer";
@@ -17,6 +31,8 @@ import Manager from "./classes/Manager";
 //****========= EVENT LISTENERS =========****}}>
 
 formLoginButton.addEventListener("click", validateLogin);
+searchButton.addEventListener("click", displayResults);
+searchResultsView.addEventListener("click", determineClick);
 
 //****========= GLOBAL VARIABLES =========****}}>
 let allUsers;
@@ -48,9 +64,14 @@ const changeView = (pageToHide, pageToShow) => {
 };
 
 function showInfo(event) {
-  if (event.target.classList.contains("login-button")) {
+  if (event.target.classList.contains("login-button") || event.target.classList.contains("post")) {
     changeView(loginView, dashboard);
+    searchOptions.classList.remove("hide")
+    user.sortBookings(bookingData, date)
     domRender(user, roomData, bookingData)
+    displayBookingCards("current", user.currentBookings)
+    displayBookingCards("past", user.pastBookings);
+    displayBookingCards("upcoming", user.upcomingBookings);
   }
 }
 
@@ -76,6 +97,14 @@ function loadCustomerInfo(userID, event, userType) {
   }
 }
 
+function displayResults(event) {
+  event.preventDefault()
+  changeView(dashboard, searchResultsView)
+  let searchDate = moment(searchInput.value).format('YYYY/MM/DD')
+  let results = user.findVacencies(bookingData, roomData, searchDate)
+  populateResults(results)
+}
+
 function createNewBooking(booking) { 
   let newPostObject = {
     userID: user.id,
@@ -84,4 +113,18 @@ function createNewBooking(booking) {
   };
   apiCalls.postNewBooking(newPostObject)
 
+}
+
+function determineClick(event) {
+  event.preventDefault()
+  if(event.target.nodeName === "H5") {
+    let searchDate = moment(searchInput.value).format('YYYY/MM/DD')
+    let newBooking = {userId: user.id, date: searchDate, roomNumber: +event.target.id}
+    apiCalls.postNewBooking(newBooking).then(data => reloadData(data, event))
+  }
+}
+const reloadData = (data, event) => {
+  bookingData.push(data)
+  searchResultsView.classList.add("hide")
+  loadCustomerInfo(user.id, event, "customer")
 }

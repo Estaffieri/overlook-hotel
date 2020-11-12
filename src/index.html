@@ -18,11 +18,9 @@
       </div>
     </header>
       <div class="login-form-container">
-        <section class="login-error-message hide">
-          <img class="warning-icon" id="icon" src="./images/warning.svg" alt="warning-icon-for-login-page">
-          <p class="error-message">Oops! Invalid login!</p>
+        <section class="login-error-message">
         </section>
-        <form tabindex="0" class="Login-form" aria-tag="Customer or Manager login">
+        <form tabindex="0" class="Login-form" aria-label="Customer or Manager login">
           <label tabindex ="0" for="username-input">Username:</label>
           <input id="username-input" type="text" required aria-required="true" aria-label="username-input" placeholder="Customer or Manager username"></input>
           <label tabindex="0" for="password-input">Password:</label>
@@ -33,6 +31,18 @@
     </div>
     <main>
       <div class="dashboard-view">
+      </div>
+      <section class="search-input-area hide">
+        <label tabindex="0" for="search-input">Search:</label>
+        <input id="search-input" type="date"  aria-label="search-field-for-rooms-or-bookings-input" placeholder="search by date"></input>
+        <button class="search-button" type="submit">SEARCH</button>
+      </section>
+      <div class="search-results-view hide">
+        <img tabindex="0" class="user-icon" id="icon" src="./images/user.svg" alt="vector-image-of-a-old-fashion-suitcase">
+        <h3>Search Results:</h3>
+        <article class="results">
+        </article>
+        <button type="submit" name="go-back-button" class="go-back-button" aria-label="return to dashboard view">GO BACK</button>
       </div>
     </main>
    </body>

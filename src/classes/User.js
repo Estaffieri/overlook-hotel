@@ -1,12 +1,21 @@
+import Customer from "./Customer";
 
-export default class User {
+export default class User extends Customer {
   constructor(userData) {
+    super(userData)
     this.id = userData.id;
     this.name = userData.name;
   }
   greetUser() {
     let userFirstName = this.name.split(" ")[0];
     return `Welcome, ${userFirstName}!`;
+  }
+  sortBookings(bookingData, currentDate) {
+    let allBookings = this.viewAllMyBookings(bookingData)
+    allBookings.forEach(booking => {
+      this.determineBookingStatus(booking, currentDate)
+    })
+
   }
   viewAllMyBookings(bookingData) {
     let myBookings = bookingData.filter((booking) => {
